@@ -14,7 +14,8 @@ namespace Sitecore.Support.Mvc.Pipelines.Request.RequestBegin
       {
         using (new SiteContextSwitcher(Factory.GetSite("shell")))
         {
-          ShellPage.IsLoggedIn();
+          // Use patched ShellPage class instead of original
+          Sitecore.Support.Shell.Web.ShellPage.IsLoggedIn();
         }
       }
     }
