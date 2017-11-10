@@ -106,6 +106,14 @@ namespace Sitecore.Support.Shell.Web
         {
           ShellPage.SetRedirect(httpContext);
           urlString["returnUrl"] = (urlString["returnUrl"] ?? WebUtil.GetRawUrl());
+
+          #region Added
+          // Remove parameters like in the Sitecore.Pipelines.HttpRequest.ExecuteRequest.RedirectToLoginPage(String) method
+          urlString.Parameters.Remove("sc_itemid");
+          urlString.Parameters.Remove("user");
+          urlString.Parameters.Remove("sc_site");
+
+          #endregion
         }
         else
         {

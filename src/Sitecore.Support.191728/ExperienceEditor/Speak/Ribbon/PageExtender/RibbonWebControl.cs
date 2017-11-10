@@ -29,7 +29,8 @@ namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.PageExtender
       SiteContext site = Factory.GetSite("shell");
       using (new SiteContextSwitcher(site))
       {
-        ShellPage.IsLoggedIn();
+        // Uses patched ShellPage class instead of original to fix the GotoLoginPage method
+        Sitecore.Support.Shell.Web.ShellPage.IsLoggedIn();
       }
       string mode = this.Mode;
       bool webEdit = mode == "edit";

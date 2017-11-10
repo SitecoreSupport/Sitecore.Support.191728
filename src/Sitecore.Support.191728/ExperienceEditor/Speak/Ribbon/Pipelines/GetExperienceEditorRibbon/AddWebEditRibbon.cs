@@ -27,7 +27,8 @@ namespace Sitecore.Support.ExperienceEditor.Speak.Ribbon.Pipelines.GetExperience
         }
         if (str != string.Empty)
         {
-          RibbonWebControl control = new RibbonWebControl
+          // Uses our RibbonWebControl instad of original to override DoRender method
+          Sitecore.Support.ExperienceEditor.Speak.Ribbon.PageExtender.RibbonWebControl control = new Sitecore.Support.ExperienceEditor.Speak.Ribbon.PageExtender.RibbonWebControl
           {
             State = str
           };
