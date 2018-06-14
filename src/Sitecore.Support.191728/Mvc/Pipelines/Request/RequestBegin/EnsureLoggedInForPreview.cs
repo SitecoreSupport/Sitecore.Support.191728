@@ -12,10 +12,12 @@ namespace Sitecore.Support.Mvc.Pipelines.Request.RequestBegin
   {
     public void Process(PipelineArgs args)
     {
-      if ((!Context.PageMode.IsNormal && !Context.IsLoggedIn)
+      #region Modified code
+      if (!Context.PageMode.IsNormal && (!Context.IsLoggedIn
           || !TicketManager.IsCurrentTicketValid()
-          || AuthenticationManager.IsAuthenticationTicketExpired())
-            {
+          || AuthenticationManager.IsAuthenticationTicketExpired()))
+      #endregion
+      {
         using (new SiteContextSwitcher(Factory.GetSite("shell")))
         {
           // Use patched ShellPage class instead of original
